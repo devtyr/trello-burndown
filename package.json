@@ -1,0 +1,27 @@
+{
+  "name": "trello-burndown",
+  "description": "A simple nodejs trello burndown chart generator",
+  "author": "Norbert Eder <wpfnerd+nodejs@gmail.com>",
+  "homepage": "https://github.com/devtyr/trello-burndown",
+  "bugs": "https://github.com/devtyr/trello-burndown/issues",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": [
+    "trello",
+    "burndown",
+    "scrum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/devtyr/trello-burndown.git"
+  },
+  "dependencies": {
+    "trello": ">=0.0.8",
+    "restler": ">=2.0.1",
+    "optimist": ">=0.3.4",
+    "mu2": ">=0.5.17"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
