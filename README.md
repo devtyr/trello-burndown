@@ -37,7 +37,9 @@ Based on the given information total estimates, efforts etc. are calculated and 
 
 ## Installation
 
-Installation via `npm` is not supported at the moment, you have to do it manually. Clone this repository and call `npm install` to install all necessary Node modules.
+You can install this via `npm`:
+
+	npm install trello-burndown
 
 ### Obtain a Trello token
 
@@ -57,6 +59,5 @@ There are some settings you can set up in `settings.json`:
 
 ## Planned features
 
-* Provide `npm` package
 * Generate charts on the fly and serve it via HTTP server
 * Configure via web page
