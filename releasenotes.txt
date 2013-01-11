@@ -1,0 +1,17 @@
+RELEASE NOTES
+
+0.3.0
+
+- HTTP server
+- Included xCharts and D3 for generating charts
+- Support for different sprints
+- Removed CSV support
+- Data exported in JSON format
+
+0.2.0
+
+- standup meeting time
+
+0.1.0
+
+- initial release

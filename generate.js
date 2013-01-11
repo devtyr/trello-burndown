@@ -21,11 +21,14 @@ var options = require('optimist')
 			  .describe('n', 'Name of the sprint');
 
 var optionArgs = options.argv;
+var path = require('path');
+
+global.settings = require('./settings');
+settings.root   = __dirname.replace(/\/+$/, "");
+settings.exportPath = path.join(settings.root, 'export');
 
 var CardReceiver = require('./lib/cardreceiver');
 var CardStatistics = require('./lib/cardstatistics');
-
-global.settings = require('./settings');
 
 var lists = optionArgs.l;
 var days = optionArgs.d;

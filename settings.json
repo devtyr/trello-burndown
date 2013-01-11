@@ -1,5 +1,6 @@
 {
 	"applicationKey":	"--insert application key--",
 	"userToken":		"--insert user token--",
-	"boardId":			"--insert board id--"
+	"boardId":			"--insert board id--",
+	"port":             8008
 }

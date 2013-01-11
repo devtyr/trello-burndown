@@ -4,12 +4,15 @@
   "author": "Norbert Eder <wpfnerd+nodejs@gmail.com>",
   "homepage": "https://github.com/devtyr/trello-burndown",
   "bugs": "https://github.com/devtyr/trello-burndown/issues",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "keywords": [
     "trello",
     "burndown",
-    "scrum"
+    "scrum",
+    "effort",
+    "estimate",
+    "sprint"
   ],
   "repository": {
     "type": "git",
@@ -21,7 +24,10 @@
     "optimist": ">=0.3.4",
     "d3": ">=3.0.2",
     "xcharts": ">=0.1.3",
-    "mime": ">=1.2.7"
+    "mime": ">=1.2.7",
+    "connect": ">=2.7.2",
+    "qs": ">=0.5.3",
+    "url": ">=0.7.9"
   },
   "engines": {
     "node": ">= 0.8.0"

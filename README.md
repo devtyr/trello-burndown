@@ -29,6 +29,7 @@ To generate it, you have to execute `generate.js` as described below:
 * **-r**: [required] A comma separated list of 0 or 1 (maching the days list) describing if a day is a working day or not (special days are the first - sprint planning - and the last one - deployment/recap)
 * **-f**: [required] The name of the list where finished tasks have to be moved to
 * **-t**: [optional] Time of your daily standup meeting. If this is defined, values are calculated based on this time, instead of midnight. **Please note** that you have to define the time in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601 "ISO 8601") format.
+* **-n**: [required] Name of the sprint; is used for file generation too
 
 An example call:
 
@@ -38,13 +39,33 @@ Example call with standup meeting:
 
 	node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00"	
 
-Based on the given information total estimates, efforts etc. are calculated and exported to `export.csv`. That can be the data base for generating a chart (works fine as an external data source for Microsoft Excel).
+Based on the given information total estimates, efforts etc. are calculated and exported to subfolder `export` in JSON format. The exported data can be viewed using the included web server.
+
+## Web server
+
+To start the web server use the command
+
+	node run.js
+
+Per default you can connect to `http://localhost:8008/?sprint=[sprintname]`. Replace `[sprintname]` with the name you used for generation (option `-n`). 
+
+### Supported browsers
+
+To view the charts you can use Chrome (Chromium), Firefox, Safari (WebKit), Opera and IE10 (IE9 may work, not tested yet).
+
+### Sample
+
+Here is a screenshot of a generated burndown chart (for a very bad sprint):
+
+![Sample burndown chart](http://i.imgur.com/uZbkr.png "Sample burndown chart")
 
 ## Installation
 
 You can install this via `npm`:
 
 	npm install trello-burndown
+
+It's recommended to create a daily job that generates the necessary data to be served by the web server.
 
 ### Obtain a Trello token
 
@@ -61,9 +82,11 @@ There are some settings you can set up in `settings.json`:
 	applicationKey		Insert your obtained application key from Trello to get access to it
 	userToken			Define your user token you will receive when obtaining an application ey
 	boardId				Define the id of the board you want to search for release notes
+	port 				The port the web server is listening, default is 8008
 
 ## Planned features
 
+* Use templating support for HTML generation
 * Support generation of different output files (sprints)
 * Generate charts on the fly and serve it via HTTP server
 * Configure via web page
