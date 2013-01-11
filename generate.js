@@ -6,7 +6,7 @@
 
 var options = require('optimist')
 			  .usage('Generate burndown charts from Trello cards.\n\nUsage: $0 -l [lists] -d [days] -r [resources] -f [finishlist]')
-			  .demand(['l','d','r','f'])
+			  .demand(['l','d','r','f','n'])
 			  .alias('l', 'lists')
 			  .describe('l', 'Included lists separated by comma')
 			  .alias('d', 'days')
@@ -16,7 +16,9 @@ var options = require('optimist')
 			  .alias('f', 'finishlist')
 			  .describe('f', 'Name of the list all finished tasks are moved to')
 			  .alias('t', 'standuptime')
-			  .describe('t', 'Standup meeting time; if not defined, split time is midnight');
+			  .describe('t', 'Standup meeting time; if not defined, split time is midnight')
+			  .alias('n', 'name')
+			  .describe('n', 'Name of the sprint');
 
 var optionArgs = options.argv;
 
@@ -30,6 +32,7 @@ var days = optionArgs.d;
 var resources = optionArgs.r;
 var finishedList = optionArgs.f;
 var standuptime = optionArgs.t;
+var name = optionArgs.n;
 
 if (!lists || !lists.length) 
 {
@@ -84,7 +87,7 @@ function start() {
 
 				printStatistics(data);
 
-				statistics.export(data, resources, days, function(err) {
+				statistics.export(data, resources, days, name, function(err) {
 					if (err) {
 						console.log(err);
 						return;
