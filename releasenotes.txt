@@ -1,5 +1,12 @@
 RELEASE NOTES
 
+0.4.0
+
+- New chart "total estimate and effort"
+- Archived Trello lists won't be considered any more
+- Estimates can be floats now
+- Console output statistics fixed
+
 0.3.0
 
 - HTTP server
