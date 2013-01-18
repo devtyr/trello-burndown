@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>trello-burndown by devtyr</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>trello-burndown</h1>
+        <p>Generate a burndown chart from trello tasks</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/devtyr/trello-burndown" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/devtyr/trello-burndown/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/devtyr/trello-burndown/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p>Generate a burndown chart from trello cards.</p>
+
+<h2>How it works</h2>
+
+<p>If you use <a href="http://trello.com" title="Trello">Trello</a> to manage your sprint cards, you might want to generate your burndown chart automatically instead of doing it manually.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Load cards from Trello based on a sprint-definition</li>
+<li>Export of statistics</li>
+<li>Handling of concurrent sprints</li>
+<li>Hosting via Web Server</li>
+</ul><h3>Preconditions</h3>
+
+<p>As a precondition you have to encode some information into the card's title. This looks like that:</p>
+
+<pre><code>[p|est-e] title
+</code></pre>
+
+<p><strong>Huh?</strong></p>
+
+<ul>
+<li>
+<strong>p</strong>: the priority/order of the task (to be "visible" if a task is moved to another list)</li>
+<li>
+<strong>est</strong>: the estimate of the task, defined within the sprint planning</li>
+<li>
+<strong>e</strong>: the real effort (to reflect this against the estimate)</li>
+</ul><h3>Generate it!</h3>
+
+<p>To generate it, you have to execute <code>generate.js</code> as described below:</p>
+
+<pre><code>node generate.js -l "lists" -d "included dates" -r "count days" -f "finish list"
+</code></pre>
+
+<ul>
+<li>
+<strong>-l</strong>: [required] A comma separated list of Trello lists (by name) that are set up for the sprint, e.g. <em>Planned</em>, <em>In progress</em>, <em>Testing</em>, <em>Finished</em>
+</li>
+<li>
+<strong>-d</strong>: [required] A comma separated list of dates in the format YYYY-MM-DD describing the days are part of the sprint</li>
+<li>
+<strong>-r</strong>: [required] A comma separated list of 0 or 1 (maching the days list) describing if a day is a working day or not (special days are the first - sprint planning - and the last one - deployment/recap)</li>
+<li>
+<strong>-f</strong>: [required] The name of the list where finished tasks have to be moved to</li>
+<li>
+<strong>-t</strong>: [optional] Time of your daily standup meeting. If this is defined, values are calculated based on this time, instead of midnight. <strong>Please note</strong> that you have to define the time in <a href="http://en.wikipedia.org/wiki/ISO_8601" title="ISO 8601">ISO 8601</a> format.</li>
+<li>
+<strong>-n</strong>: [required] Name of the sprint; is used for file generation too</li>
+</ul><p>An example call:</p>
+
+<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished"
+</code></pre>
+
+<p>Example call with standup meeting:</p>
+
+<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00"    
+</code></pre>
+
+<p>Based on the given information total estimates, efforts etc. are calculated and exported to subfolder <code>export</code> in JSON format. The exported data can be viewed using the included web server.</p>
+
+<h2>Web server</h2>
+
+<p>To start the web server use the command</p>
+
+<pre><code>node run.js
+</code></pre>
+
+<p>Per default you can connect to <code>http://localhost:8008/?sprint=[sprintname]</code>. Replace <code>[sprintname]</code> with the name you used for generation (option <code>-n</code>). </p>
+
+<h3>Supported browsers</h3>
+
+<p>To view the charts you can use Chrome (Chromium), Firefox, Safari (WebKit), Opera and IE10 (IE9 may work, not tested yet).</p>
+
+<h3>Sample</h3>
+
+<p>Here is a screenshot of a generated burndown chart (for a very bad sprint):</p>
+
+<p><img src="http://i.imgur.com/uZbkr.png" alt="Sample burndown chart" title="Sample burndown chart"></p>
+
+<h2>Installation</h2>
+
+<p>You can install this via <code>npm</code>:</p>
+
+<pre><code>npm install trello-burndown
+</code></pre>
+
+<p>It's recommended to create a daily job that generates the necessary data to be served by the web server.</p>
+
+<h3>Obtain a Trello token</h3>
+
+<p>First, log in to Trello and open <a href="https://trello.com/1/appKey/generate" title="Generate API Keys">Generate API Keys</a>. You will receive an key to use in the next step.</p>
+
+<p>Second, call <a href="https://trello.com/1/authorize?key=YOUR_KEY&amp;name=trello-releasenotes&amp;expiration=never&amp;response_type=token">https://trello.com/1/authorize?key=YOUR_KEY&amp;name=trello-releasenotes&amp;expiration=never&amp;response_type=token</a> to grant access for this application. Be sure to replace <code>YOUR_KEY</code> with the key received in the first step.</p>
+
+<blockquote>
+<p>For further information visit: <a href="https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user" title="Getting a Token from a User">Getting a Token from a User</a></p>
+</blockquote>
+
+<p>Store the key from the first action in setting <code>applicationKey</code> of <code>settings.json</code> and the token received from the second step in <code>userToken</code>. To connect to the board of your choice, copy the board id from your web browser.</p>
+
+<p>There are some settings you can set up in <code>settings.json</code>:</p>
+
+<pre><code>applicationKey  Insert your obtained application key from Trello to get access to it
+userToken   Define your user token you will receive when obtaining an application key
+boardId     Define the id of the board you want to search for release notes
+port        The port the web server is listening, default is 8008
+</code></pre>
+
+<h2>Planned features</h2>
+
+<ul>
+<li>Use templating support for HTML generation</li>
+<li>Generate charts on the fly and serve it via HTTP server</li>
+<li>Configure via web page</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/devtyr">devtyr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-366818-16");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
