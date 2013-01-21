@@ -2,5 +2,8 @@
 	"applicationKey":	"--insert application key--",
 	"userToken":		"--insert user token--",
 	"boardId":			"--insert board id--",
-	"port":             8008
+	"port":             8008,
+	"template":			"default.template",
+	"html_title":		"Trello burndown chart generator",
+	"html_header":		"Burndown for sprint "
 }

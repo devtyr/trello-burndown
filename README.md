@@ -33,11 +33,11 @@ To generate it, you have to execute `generate.js` as described below:
 
 An example call:
 
-	node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished"
+	node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -n "sprint1"
 
 Example call with standup meeting:
 
-	node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00"	
+	node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00" -n "sprint1"
 
 Based on the given information total estimates, efforts etc. are calculated and exported to subfolder `export` in JSON format. The exported data can be viewed using the included web server.
 
@@ -58,6 +58,43 @@ To view the charts you can use Chrome (Chromium), Firefox, Safari (WebKit), Oper
 Here is a screenshot of a generated burndown chart (for a very bad sprint):
 
 ![Sample burndown chart](http://i.imgur.com/uZbkr.png "Sample burndown chart")
+
+### Customization
+
+The generated output can be customized by overriding the `default.template` or (even better) by creating and configuring a new template. Use [mustache 5](http://mustache.github.com/mustache.5.html "mustache 5") syntax for your templates.
+
+This is what you will have available in your templates:
+
+	{
+		title: 'Trello burndown chart generator',
+		header: 'Burndown for sprint ',
+		sprint: '47',
+		burndown: {
+			data1: [
+				{ x: "0", y: 20 }
+			],
+			data2: [
+				{ x: "0", y: 20 }
+			]
+		},
+		effortDaily: {
+			data1: [
+				{ x: "0", y: 20 }
+			],
+			data2: [
+				{ x: "0", y: 20 }
+			]
+		},
+		effortTotal: {
+			data1: [
+				{ x: "0", y: 20 }
+			],
+			data2: [
+				{ x: "0", y: 20 }
+			]
+		},
+		generationTime: Change date of sprint data file
+	}
 
 ## Installation
 
@@ -83,10 +120,13 @@ There are some settings you can set up in `settings.json`:
 	userToken			Define your user token you will receive when obtaining an application ey
 	boardId				Define the id of the board you want to search for release notes
 	port 				The port the web server is listening, default is 8008
+	template			Defines the name of the template to be used (will be searched in `templates` subfolder)
+	html_title			Title of the generated page
+	html_header			Header of the generated page (H1)
 
 ## Planned features
 
-* Use templating support for HTML generation
-* Support generation of different output files (sprints)
-* Generate charts on the fly and serve it via HTTP server
-* Configure via web page
+* Store configurations
+* Generate charts on the fly and serve it via HTTP server based on stored configurations
+* Overview page for sprint selection ...
+
