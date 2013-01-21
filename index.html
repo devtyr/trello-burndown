@@ -45,14 +45,7 @@
 
 <p>If you use <a href="http://trello.com" title="Trello">Trello</a> to manage your sprint cards, you might want to generate your burndown chart automatically instead of doing it manually.</p>
 
-<h2>Features</h2>
-
-<ul>
-<li>Load cards from Trello based on a sprint-definition</li>
-<li>Export of statistics</li>
-<li>Handling of concurrent sprints</li>
-<li>Hosting via Web Server</li>
-</ul><h3>Preconditions</h3>
+<h3>Preconditions</h3>
 
 <p>As a precondition you have to encode some information into the card's title. This looks like that:</p>
 
@@ -91,12 +84,12 @@
 <strong>-n</strong>: [required] Name of the sprint; is used for file generation too</li>
 </ul><p>An example call:</p>
 
-<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished"
+<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -n "sprint1"
 </code></pre>
 
 <p>Example call with standup meeting:</p>
 
-<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00"    
+<pre><code>node generate.js -l "Planned, In progress, Testing, Finished" -d "2013-02-01, 2013-02-02" -r "1,1" -f "Finished" -t "10:00:00+01:00" -n "sprint1"
 </code></pre>
 
 <p>Based on the given information total estimates, efforts etc. are calculated and exported to subfolder <code>export</code> in JSON format. The exported data can be viewed using the included web server.</p>
@@ -119,6 +112,44 @@
 <p>Here is a screenshot of a generated burndown chart (for a very bad sprint):</p>
 
 <p><img src="http://i.imgur.com/uZbkr.png" alt="Sample burndown chart" title="Sample burndown chart"></p>
+
+<h3>Customization</h3>
+
+<p>The generated output can be customized by overriding the <code>default.template</code> or (even better) by creating and configuring a new template. Use <a href="http://mustache.github.com/mustache.5.html" title="mustache 5">mustache 5</a> syntax for your templates.</p>
+
+<p>This is what you will have available in your templates:</p>
+
+<pre><code>{
+    title: 'Trello burndown chart generator',
+    header: 'Burndown for sprint ',
+    sprint: '47',
+    burndown: {
+        data1: [
+            { x: "0", y: 20 }
+        ],
+        data2: [
+            { x: "0", y: 20 }
+        ]
+    },
+    effortDaily: {
+        data1: [
+            { x: "0", y: 20 }
+        ],
+        data2: [
+            { x: "0", y: 20 }
+        ]
+    },
+    effortTotal: {
+        data1: [
+            { x: "0", y: 20 }
+        ],
+        data2: [
+            { x: "0", y: 20 }
+        ]
+    },
+    generationTime: Change date of sprint data file
+}
+</code></pre>
 
 <h2>Installation</h2>
 
@@ -144,17 +175,20 @@
 <p>There are some settings you can set up in <code>settings.json</code>:</p>
 
 <pre><code>applicationKey  Insert your obtained application key from Trello to get access to it
-userToken   Define your user token you will receive when obtaining an application key
+userToken   Define your user token you will receive when obtaining an application ey
 boardId     Define the id of the board you want to search for release notes
 port        The port the web server is listening, default is 8008
+template    Defines the name of the template to be used (will be searched in `templates` subfolder)
+html_title  Title of the generated page
+html_header Header of the generated page (H1)
 </code></pre>
 
 <h2>Planned features</h2>
 
 <ul>
-<li>Use templating support for HTML generation</li>
-<li>Generate charts on the fly and serve it via HTTP server</li>
-<li>Configure via web page</li>
+<li>Store configurations</li>
+<li>Generate charts on the fly and serve it via HTTP server based on stored configurations</li>
+<li>Overview page for sprint selection ...</li>
 </ul><h2>Other Tools</h2>
 
 <p>There is another tool called <a href="http://devtyr.github.com/trello-releasenotes/" title="trello-releasenotes">trello-releasenotes</a> that provides export of release notes from Trello cards.</p>
