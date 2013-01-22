@@ -2,6 +2,16 @@
 
 Generate a burndown chart from trello cards.
 
+## Features
+
+* Generate burndown charts from Trello cards
+* Support of multiple sprints
+* Web server
+* Sprint configuration can be saved for usage via website
+* Update sprint data based on a job
+* Update sprint data using the website
+* Templating
+
 ## How it works
 
 If you use [Trello](http://trello.com "Trello") to manage your sprint cards, you might want to generate your burndown chart automatically instead of doing it manually.
@@ -30,6 +40,7 @@ To generate it, you have to execute `generate.js` as described below:
 * **-f**: [required] The name of the list where finished tasks have to be moved to
 * **-t**: [optional] Time of your daily standup meeting. If this is defined, values are calculated based on this time, instead of midnight. **Please note** that you have to define the time in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601 "ISO 8601") format.
 * **-n**: [required] Name of the sprint; is used for file generation too
+* **-s**: [optional] Export the given configuration to a configuration file that can be used to refresh the sprint from the website
 
 An example call:
 
@@ -126,7 +137,5 @@ There are some settings you can set up in `settings.json`:
 
 ## Planned features
 
-* Store configurations
-* Generate charts on the fly and serve it via HTTP server based on stored configurations
-* Overview page for sprint selection ...
+* Add some KPI's
 

@@ -3,6 +3,8 @@
 ## 0.6.0
 
 * Home page for sprint selection
+* Store configuration using parameter "-s" (generate.js)
+* Refresh sprint for specific configuration (web page)
 
 ## 0.5.0
 

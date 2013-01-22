@@ -37,5 +37,21 @@
 				window.location.href = "/?sprint=" + selectedSprint;
 			}
 		</script>
+
+		<p>Choose a sprint to refresh:</p>
+		<input id="sprintgenerationselection" type=text list="sprintconfigs" placeholder="pull down to select sprint" required>
+		<datalist id="sprintconfigs">
+			{{#sprintConfigs}}
+				<option value="{{name}}">
+			{{/sprintConfigs}}
+		</datalist>
+		<button onClick="javascript:refreshSprint()">Refresh sprint</button>
+
+		<script type="text/javascript">
+			function refreshSprint() {
+				var selectedSprint = $("#sprintgenerationselection").attr("value");
+				window.location.href = "/refresh?sprint=" + selectedSprint;
+			}
+		</script>
 	</body>
 </html>
