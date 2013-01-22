@@ -10,48 +10,88 @@
 		<title>{{title}}</title>
 		<meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" href="../node_modules/xcharts/build/xcharts.min.css">
 		<link rel="stylesheet" href="/static/default.css">
-		<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+		<link href="/static/bootstrap.min.css" rel="stylesheet">
 
-		<script src="../node_modules/d3/d3.min.js"></script>
+		<style>
+	      body {
+	        padding-top: 60px; 
+	      }
+	    </style>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="../node_modules/xcharts/build/xcharts.min.js"></script>
+		<script src="/static/bootstrap.min.js"></script>
 	</head>
 	<body>
 
-		<h1>{{title}}</h1>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </a>
+		      <a class="brand" href="/">{{title}}</a>
+		      <div class="nav-collapse collapse">
+		        <ul class="nav">
+		          <li class="active"><a href="/">Home</a></li>
+		          <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  View sprints
+	                  <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  {{#sprints}}
+						<li>
+		                    <a href="/?sprint={{name}}">
+		                       <i class="icon-info-sign"></i>
+		                       {{name}}
+		                     </a>
+		                  </li>
+					  {{/sprints}}
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  Update sprints
+	                  <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  {{#sprintConfigs}}
+						<li>
+		                    <a href="/refresh?sprint={{name}}">
+		                       <i class="icon-info-sign"></i>
+		                       {{name}}
+		                     </a>
+		                  </li>
+					  {{/sprintConfigs}}
+	                </ul>
+	              </li>
+	              <li><a href="http://devtyr.github.com/trello-burndown/" target="_blank">About</a></li>
+		        </ul>
+		      </div><!--/.nav-collapse -->
+		    </div>
+		  </div>
+		</div>
 
-		<p>Choose a sprint to view:</p>
-		<input id="sprintselection" autofocus type=text list="sprints" placeholder="pull down to select sprint" required>
-		<datalist id="sprints">
-			{{#sprints}}
-				<option value="{{name}}">
-			{{/sprints}}
-		</datalist>
-		<button onClick="javascript:openSprint()">Open sprint</button>
+		<div class="container">
+			<div class="hero-unit">
+		        <h1>Welcome!</h1>
+		        <p><strong>trello-burndown</strong> helps you to get the perfect overview of your sprints. Manage your tasks via <a href="http://trello.com" target="_blank">Trello</a>, view the results here.</p>
+		        <p><strong>Need help?</strong> You will find a complete help <a href="http://devtyr.github.com/trello-burndown/" target="_blank">here</a>. 
+	      	</div>
 
-		<script type="text/javascript">
-			function openSprint() {
-				var selectedSprint = $("#sprintselection").attr("value");
-				window.location.href = "/?sprint=" + selectedSprint;
-			}
-		</script>
+	      	<div class="alert alert-block">
+			  <h4>Wanted!</h4>
+			  This project is hosted @ <a href="http://github.com/devtyr/trello-burndown">github</a>. It is up to you to help improve this tool.
+			</div>
 
-		<p>Choose a sprint to refresh:</p>
-		<input id="sprintgenerationselection" type=text list="sprintconfigs" placeholder="pull down to select sprint" required>
-		<datalist id="sprintconfigs">
-			{{#sprintConfigs}}
-				<option value="{{name}}">
-			{{/sprintConfigs}}
-		</datalist>
-		<button onClick="javascript:refreshSprint()">Refresh sprint</button>
+	      	<hr>
 
-		<script type="text/javascript">
-			function refreshSprint() {
-				var selectedSprint = $("#sprintgenerationselection").attr("value");
-				window.location.href = "/refresh?sprint=" + selectedSprint;
-			}
-		</script>
+	      	<footer>
+	          <p>Developed by <a href="http://devtyr.com" target="_blank">DevTyr</a></p>
+	      	</footer>
+		</div>
 	</body>
 </html>

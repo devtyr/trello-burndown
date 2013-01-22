@@ -4,7 +4,8 @@
 
 * Home page for sprint selection
 * Store configuration using parameter "-s" (generate.js)
-* Refresh sprint for specific configuration (web page)
+* Refresh sprint for specific configuration via web page (only active sprints can be refreshed)
+* Included bootstrap
 
 ## 0.5.0
 
