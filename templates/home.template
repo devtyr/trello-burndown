@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>{{title}}</title>
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="../node_modules/xcharts/build/xcharts.min.css">
+		<link rel="stylesheet" href="/static/default.css">
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+
+		<script src="../node_modules/d3/d3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="../node_modules/xcharts/build/xcharts.min.js"></script>
+	</head>
+	<body>
+
+		<h1>{{title}}</h1>
+
+		<p>Choose a sprint to view:</p>
+		<input id="sprintselection" autofocus type=text list="sprints" placeholder="pull down to select sprint" required>
+		<datalist id="sprints">
+			{{#sprints}}
+				<option value="{{name}}">
+			{{/sprints}}
+		</datalist>
+		<button onClick="javascript:openSprint()">Open sprint</button>
+
+		<script type="text/javascript">
+			function openSprint() {
+				var selectedSprint = $("#sprintselection").attr("value");
+				window.location.href = "/?sprint=" + selectedSprint;
+			}
+		</script>
+	</body>
+</html>

@@ -10,7 +10,9 @@ var path = require('path');
 global.settings = require('./settings');
 settings.root   = __dirname.replace(/\/+$/, "");
 settings.exportPath = path.join(settings.root, 'export');
-settings.templatePath = path.join(settings.root, 'templates' + path.sep + settings.template);
+settings.templatePath = path.join(settings.root, 'templates');
+settings.sprintTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.template);
+settings.homeTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.home_template);
 
 var server = require('./lib/server');
 require('http').createServer(server).listen(settings.port);

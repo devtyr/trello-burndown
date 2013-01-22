@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## 0.6.0
+
+* Home page for sprint selection
+
 ## 0.5.0
 
 ### Bugs

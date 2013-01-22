@@ -4,6 +4,7 @@
 	"boardId":			"--insert board id--",
 	"port":             8008,
 	"template":			"default.template",
+	"home_template":	"home.template",
 	"html_title":		"Trello burndown chart generator",
 	"html_header":		"Burndown for sprint "
 }
