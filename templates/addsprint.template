@@ -12,6 +12,7 @@
 
 		<link rel="stylesheet" href="/static/default.css">
 		<link href="/static/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/daterangepicker.css" rel="stylesheet">
 
 		<style>
 	      body {
@@ -21,6 +22,8 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="/static/bootstrap.min.js"></script>
+		<script src="/static/date.js"></script>
+		<script src="/static/daterangepicker.js"></script>
 	</head>
 	<body>
 
@@ -35,7 +38,7 @@
 		      <a class="brand" href="/">{{title}}</a>
 		      <div class="nav-collapse collapse">
 		        <ul class="nav">
-		          <li class="active"><a href="/">Home</a></li>
+		          <li><a href="/">Home</a></li>
 		          <li class="dropdown">
 	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 	                  View sprints
@@ -82,7 +85,7 @@
 					  {{/sprintConfigs}}
 	                </ul>
 	              </li>
-	              <li class="dropdown">
+	              <li class="dropdown active">
 	              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 	                  Manage sprints
 	                  <b class="caret"></b>
@@ -110,16 +113,42 @@
 		</div>
 
 		<div class="container">
-			<div class="hero-unit">
-		        <h1>Welcome!</h1>
-		        <p><strong>trello-burndown</strong> helps you to get the perfect overview of your sprints. Manage your tasks via <a href="http://trello.com" target="_blank">Trello</a>, view the results here.</p>
-		        <p><strong>Need help?</strong> You will find a complete help <a href="http://devtyr.github.com/trello-burndown/" target="_blank">here</a>. 
-	      	</div>
+			
+			<h2>Add new sprint</h2>
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputName">Sprint name</label>
+					<div class="controls">
+						<input class="input-xxlarge" id="inputName" type="text" placeholder="Name of the sprint" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="dateRange">Date range</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-calendar"></i></span><input type="text" name="dateRange" id="dateRange" required/>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputFinishedList">Name of "Finished list"</label>
+					<div class="controls">
+						<input class="input-xxlarge" id="inputFinishedList" type="text" placeholder="Finished list" required>
+						<span class="help-block">Enter the name of the Trello list that contains all finished tasks/cards.</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn">Save</button>
+					</div>
+				</div>
+			</form>
 
-	      	<div class="alert alert-block">
-			  <h4>Wanted!</h4>
-			  This project is hosted @ <a href="http://github.com/devtyr/trello-burndown">github</a>. It is up to you to help improve this tool.
-			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#dateRange').daterangepicker();
+				});
+			</script>
 
 	      	<hr>
 
