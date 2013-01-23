@@ -35,8 +35,8 @@
 		      <a class="brand" href="/">{{title}}</a>
 		      <div class="nav-collapse collapse">
 		        <ul class="nav">
-		          <li class="active"><a href="/">Home</a></li>
-		          <li class="dropdown">
+		          <li><a href="/">Home</a></li>
+		          <li class="dropdown active">
 	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 	                  View sprints
 	                  <b class="caret"></b>
@@ -90,16 +90,25 @@
 		</div>
 
 		<div class="container">
-			<div class="hero-unit">
-		        <h1>Welcome!</h1>
-		        <p><strong>trello-burndown</strong> helps you to get the perfect overview of your sprints. Manage your tasks via <a href="http://trello.com" target="_blank">Trello</a>, view the results here.</p>
-		        <p><strong>Need help?</strong> You will find a complete help <a href="http://devtyr.github.com/trello-burndown/" target="_blank">here</a>. 
-	      	</div>
-
-	      	<div class="alert alert-block">
-			  <h4>Wanted!</h4>
-			  This project is hosted @ <a href="http://github.com/devtyr/trello-burndown">github</a>. It is up to you to help improve this tool.
+			<h2>All sprints</h2>
+			
+			<div class="alert alert-success">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  All sprints not having a persisted configuration are handled like inactive/completed sprints.
 			</div>
+
+			<p>Below you find a complete list of all your sprints. Choose one to view the results.</p>
+
+			<ul>
+				{{#all_sprints}}
+					<li>
+						<a href="/?sprint={{name}}">{{name}}</a>
+					</li>
+				{{/all_sprints}}
+				{{^all_sprints}}
+					No sprints available
+				{{/all_sprints}}
+			</ul>
 
 	      	<hr>
 

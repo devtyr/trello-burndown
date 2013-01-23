@@ -1,5 +1,11 @@
 # RELEASE NOTES
 
+## 0.7.0
+
+* Only active sprints are shown in "View sprints"
+* Added "All sprints" page
+* Renamed "Update sprints" to "Update active sprints"
+
 ## 0.6.0
 
 * Home page for sprint selection

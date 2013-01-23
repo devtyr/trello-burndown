@@ -52,11 +52,20 @@
 	                  {{#sprints}}
 						<li>
 		                    <a href="/?sprint={{name}}">
-		                       <i class="icon-info-sign"></i>
+		                       <i class="icon-signal"></i>
 		                       {{name}}
 		                     </a>
 		                  </li>
 					  {{/sprints}}
+					  {{#has_sprints}}
+					    <li class="divider"></li>
+					  	<li>
+					  		<a href="/all">
+					  			<i class="icon-list"></i>
+					  			All sprints
+					  		</a>
+					  	</li>
+					  {{/has_sprints}}
 					  {{^sprints}}
 					  	<li>
 					  		no sprints available
@@ -66,14 +75,14 @@
 	              </li>
 	              <li class="dropdown">
 	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                  Update sprints
+	                  Update active sprints
 	                  <b class="caret"></b>
 	                </a>
 	                <ul class="dropdown-menu">
 	                  {{#sprintConfigs}}
 						<li>
 		                    <a href="/refresh?sprint={{name}}">
-		                       <i class="icon-info-sign"></i>
+		                       <i class="icon-refresh"></i>
 		                       {{name}}
 		                     </a>
 		                  </li>
