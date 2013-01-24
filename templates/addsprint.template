@@ -130,6 +130,7 @@
 						</div>
 					</div>
 				</div>
+				<div id="date_placeholder"></div>
 				<div class="control-group">
 					<label class="control-label" for="inputFinishedList">Name of "Finished list"</label>
 					<div class="controls">
@@ -147,6 +148,50 @@
 			<script type="text/javascript">
 				$(document).ready(function() {
 					$('#dateRange').daterangepicker();
+					$('#dateRange').blur(function() {
+
+						var html = '<div class="control-group">' +
+							'<label class="control-label">[date]</label>' +
+							'<div class="controls">' + 
+								'<label class="checkbox inline">[working]</label><label class="checkbox inline">[active]</label>' +
+							'</div>' +
+						'</div>';
+
+						var datePicker = $('#dateRange').data().daterangepicker;
+
+						var start = datePicker.startDate;
+						var end = datePicker.endDate;
+
+						if (start && end) {
+
+							var startDate = new Date(Date.parse(start));
+							var endDate = new Date(Date.parse(end));
+
+							var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+							var diffDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay))) + 1;
+
+							var dateItems = '';
+							for (var i = 0; i < diffDays; i++) {
+								var currentDate = new Date(startDate);
+								currentDate.setDate(startDate.getDate() + i);
+								var template = html.replace(/\[date\]/gi, currentDate.toString('MM/dd/yyyy'));
+								if (i == 0 || i == (diffDays - 1)) {
+									template = template.replace(/\[working\]/gi, '<input type="checkbox" style="width: 75px;"> Work day');
+								} else {
+									template = template.replace(/\[working\]/gi, '<input type="checkbox" style="width: 75px;" checked> Work day');
+								}
+								if (i == 0 || i == (diffDays - 1)) {
+									template = template.replace(/\[active\]/gi, '<input type="checkbox"> Active');
+								} else {
+									template = template.replace(/\[active\]/gi, '<input type="checkbox" checked> Active');
+								}
+								dateItems += template;
+							}
+
+							$('#date_placeholder').replaceWith(dateItems);
+						}
+						
+					});
 				});
 			</script>
 
