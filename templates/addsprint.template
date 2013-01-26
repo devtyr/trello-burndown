@@ -26,6 +26,8 @@
 		<script src="/static/date.js"></script>
 		<script src="/static/daterangepicker.js"></script>
 		<script src="/static/bootstrap-datetimepicker.min.js"></script>
+		<script src="/static/knockout-2.2.1.js"></script>
+		<script src="/static/trello-burndown.js" defer="defer"></script>
 	</head>
 	<body>
 
@@ -124,11 +126,11 @@
 		<div class="container">
 			
 			<h2>Add new sprint</h2>
-			<form class="form-horizontal">
+			<form class="form-horizontal" data-bind="submit: addSprint">
 				<div class="control-group">
 					<label class="control-label" for="inputName">Sprint name</label>
 					<div class="controls">
-						<input class="input-xxlarge" id="inputName" type="text" placeholder="Name of the sprint" required>
+						<input class="input-xxlarge" id="inputName" type="text" placeholder="Name of the sprint" required data-bind="value: sprint.name">
 					</div>
 				</div>
 				<div class="control-group">
@@ -143,7 +145,7 @@
 				<div class="control-group">
 					<label class="control-label" for="inputFinishedList">Name of "Finished list"</label>
 					<div class="controls">
-						<input class="input-xxlarge" id="inputFinishedList" type="text" placeholder="Finished list" required>
+						<input class="input-xxlarge" id="inputFinishedList" type="text" placeholder="Finished list" required data-bind="value: sprint.finishedList">
 						<span class="help-block">Enter the name of the Trello list that contains all finished tasks/cards.</span>
 					</div>
 				</div>
