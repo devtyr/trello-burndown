@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/static/default.css">
 		<link href="/static/bootstrap.min.css" rel="stylesheet">
 		<link href="/static/daterangepicker.css" rel="stylesheet">
+		<link href="/static/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 		<style>
 	      body {
@@ -24,6 +25,7 @@
 		<script src="/static/bootstrap.min.js"></script>
 		<script src="/static/date.js"></script>
 		<script src="/static/daterangepicker.js"></script>
+		<script src="/static/bootstrap-datetimepicker.min.js"></script>
 	</head>
 	<body>
 
@@ -146,6 +148,14 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label" for="standupTime">Standup meeting</label>
+					<div class="controls">
+						<div class="input-prepend" id="standupTimeDiv">
+							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span><input data-format="hh:mm" id="standupTime" type="text">
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
 					<div class="controls">
 						<button type="submit" class="btn">Save</button>
 					</div>
@@ -195,9 +205,11 @@
 								dateItems += template;
 							}
 
-							$('#date_placeholder').replaceWith(dateItems);
+							$('#date_placeholder').html(dateItems);
 						}
-						
+					});
+					$('#standupTimeDiv').datetimepicker({
+						pickDate: false
 					});
 				});
 			</script>
