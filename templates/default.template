@@ -57,6 +57,12 @@
 		                     </a>
 		                  </li>
 					  {{/sprints}}
+					  {{^sprints}}
+					  	<li>
+					  		<i class="icon-info"></i>
+					  		No active sprints
+					  	</li>
+					  {{/sprints}}
 					  {{#has_sprints}}
 					    <li class="divider"></li>
 					  	<li>
@@ -66,11 +72,6 @@
 					  		</a>
 					  	</li>
 					  {{/has_sprints}}
-					  {{^sprints}}
-					  	<li>
-					  		no sprints available
-					  	</li>
-					  {{/sprints}}
 	                </ul>
 	              </li>
 	              <li class="dropdown">
@@ -89,7 +90,8 @@
 					  {{/sprintConfigs}}
 					  {{^sprintConfigs}}
 					  	<li>
-					  		no sprints available
+					  		<i class="icon-info"></i>
+					  		No active sprints
 					  	</li>
 					  {{/sprintConfigs}}
 	                </ul>
