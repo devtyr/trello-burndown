@@ -6,10 +6,16 @@ function Sprint() {
 	this.standupMeeting = ko.observable();
 };
 
+function SprintDayDefinition(data) {
+	this.day = ko.observable(data.day);
+	this.isWorkDay = ko.observable(data.isWorkDay);
+}
+
 function SprintViewModel() {
 	// Data
 	var self = this;
 	self.sprint = new Sprint();
+	self.currentList = ko.observable('');
 	// Operations
 	self.addSprint = function() {
 		// add here
@@ -17,6 +23,24 @@ function SprintViewModel() {
 		// reset
 		self.sprint = new Sprint();
 	};
+
+	self.addSprintDay = function(date, isWorkDay, isActive) {
+		self.sprint.dates.push(new SprintDayDefinition({ day: date, isWorkDay: isWorkDay }));
+	};
+
+	self.clearDays = function() {
+		self.sprint.dates.removeAll();
+	};
+
+	self.addSprintList = function() {
+		self.sprint.lists.push({ name: self.currentList() });
+		self.currentList("");
+	};
+
+	self.removeSprintList = function(sprintList) {
+		self.sprint.lists.remove(sprintList);
+	};
 };
 
-ko.applyBindings(new SprintViewModel());
+var sprintViewModel = new SprintViewModel();
+ko.applyBindings(sprintViewModel);

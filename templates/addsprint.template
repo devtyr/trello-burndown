@@ -134,6 +134,21 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label" for="listName">List names</label>
+					<div class="controls">
+						<input class="input-xlarge" id="listName" type="text" placeholder="Name of list" data-bind="value: currentList">
+						<a href="#" data-bind="click: addSprintList">Add</a>
+					</div>
+					<div class="controls" data-bind="visible: sprint.lists().length > 0">
+						<ul class="unstyled" data-bind="foreach: sprint.lists">
+							<li>
+								<span data-bind="text: name"></span>
+								<a href="#" data-bind="click: $parent.removeSprintList">Delete</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label" for="dateRange">Date range</label>
 					<div class="controls">
 						<div class="input-prepend">
@@ -141,7 +156,21 @@
 						</div>
 					</div>
 				</div>
-				<div id="date_placeholder"></div>
+				<div class="control-group">
+					<label class="control-label">Selected dates</label>
+					<div data-bind="foreach: sprint.dates">
+						<div class="controls">
+							<div class="input-prepend input-append">
+								<span class="add-on"><i class="icon-calendar"></i></span>
+								<input type="text" data-bind="value: day" disabled>
+								<span class="add-on"><input type="checkbox" data-bind="checked: isWorkDay"></span>
+							</div>
+						</div>
+					</div>
+					<div class="controls" data-bind="visible: sprint.dates().length > 0">
+						<span class="help-block">Activate if day is a work day, deactivate days for sprint planning, recap meeting and holidays</span>
+					</div>
+				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputFinishedList">Name of "Finished list"</label>
 					<div class="controls">
@@ -168,21 +197,14 @@
 				$(document).ready(function() {
 					$('#dateRange').daterangepicker();
 					$('#dateRange').blur(function() {
-
-						var html = '<div class="control-group">' +
-							'<label class="control-label">[date]</label>' +
-							'<div class="controls">' + 
-								'<label class="checkbox inline">[working]</label><label class="checkbox inline">[active]</label>' +
-							'</div>' +
-						'</div>';
-
 						var datePicker = $('#dateRange').data().daterangepicker;
 
 						var start = datePicker.startDate;
 						var end = datePicker.endDate;
 
-						if (start && end) {
+						sprintViewModel.clearDays();
 
+						if (start && end) {
 							var startDate = new Date(Date.parse(start));
 							var endDate = new Date(Date.parse(end));
 
@@ -193,21 +215,15 @@
 							for (var i = 0; i < diffDays; i++) {
 								var currentDate = new Date(startDate);
 								currentDate.setDate(startDate.getDate() + i);
-								var template = html.replace(/\[date\]/gi, currentDate.toString('MM/dd/yyyy'));
-								if (i == 0 || i == (diffDays - 1)) {
-									template = template.replace(/\[working\]/gi, '<input type="checkbox" style="width: 75px;"> Work day');
-								} else {
-									template = template.replace(/\[working\]/gi, '<input type="checkbox" style="width: 75px;" checked> Work day');
-								}
-								if (i == 0 || i == (diffDays - 1)) {
-									template = template.replace(/\[active\]/gi, '<input type="checkbox"> Active');
-								} else {
-									template = template.replace(/\[active\]/gi, '<input type="checkbox" checked> Active');
-								}
-								dateItems += template;
-							}
 
-							$('#date_placeholder').html(dateItems);
+								var isWorkDay = false;
+
+								if (i > 0 && i < (diffDays - 1)) {
+									isWorkDay = true;
+								}
+
+								sprintViewModel.addSprintDay(currentDate.toString("yyyy-MM-dd"), isWorkDay);
+							}
 						}
 					});
 					$('#standupTimeDiv').datetimepicker({
