@@ -182,7 +182,7 @@
 					<label class="control-label" for="standupTime">Standup meeting</label>
 					<div class="controls">
 						<div class="input-prepend" id="standupTimeDiv">
-							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span><input data-format="hh:mm" id="standupTime" type="text">
+							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span><input data-format="hh:mm" id="standupTime" type="text" data-bind="value: sprint.standupMeeting">
 						</div>
 					</div>
 				</div>
@@ -218,7 +218,7 @@
 
 								var isWorkDay = false;
 
-								if (i > 0 && i < (diffDays - 1)) {
+								if (i > 0 && i < (diffDays - 1) && currentDate.getDay() > 0 && currentDate.getDay() < 6) {
 									isWorkDay = true;
 								}
 

@@ -4,6 +4,14 @@ function Sprint() {
 	this.finishedList = ko.observable('');
 	this.lists = ko.observableArray([]);
 	this.standupMeeting = ko.observable();
+
+	this.clear = function() {
+		this.name('');
+		this.dates([]);
+		this.finishedList('');
+		this.lists([]);
+		this.standupMeeting();		
+	}
 };
 
 function SprintDayDefinition(data) {
@@ -18,10 +26,18 @@ function SprintViewModel() {
 	self.currentList = ko.observable('');
 	// Operations
 	self.addSprint = function() {
-		// add here
-		alert("did it");
-		// reset
-		self.sprint = new Sprint();
+		self.sprint.standupMeeting(self.sprint.standupMeeting() + ":00Z");
+		var dataToSend = ko.toJSON(self.sprint);
+
+		$.ajax({
+		  type: "POST",
+		  url: "/manage/add",
+		  data: dataToSend,
+		}).done(function( msg ) {
+		  self.sprint.clear();
+		}).fail(function(jqXHR, textStatus) {
+			alert("Fail:" + textStatus);
+		});
 	};
 
 	self.addSprintDay = function(date, isWorkDay, isActive) {
