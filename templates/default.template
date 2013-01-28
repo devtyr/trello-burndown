@@ -96,6 +96,26 @@
 					  {{/sprintConfigs}}
 	                </ul>
 	              </li>
+	              <li class="dropdown">
+	              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  Manage sprints
+	                  <b class="caret"></b>
+	                </a>
+	              	<ul class="dropdown-menu">
+						<li>
+		                    <a href="/manage/edit">
+		                       <i class="icon-pencil"></i>
+		                       Edit existing sprints
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="/manage/add">
+		                       <i class="icon-plus"></i>
+		                       Add sprint
+		                    </a>
+		                </li>
+	                </ul>
+	              </li>
 	              <li><a href="http://devtyr.github.com/trello-burndown/" target="_blank">About</a></li>
 		        </ul>
 		      </div><!--/.nav-collapse -->
