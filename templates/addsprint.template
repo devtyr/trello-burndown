@@ -31,7 +31,7 @@
 	</head>
 	<body>
 
-		{{>templates/menu.template}}
+		{{>menu.template}}
 
 		<div class="container">
 			
@@ -126,7 +126,7 @@
 
 	      	<hr>
 
-	      	{{>templates/footer.template}}
+	      	{{>footer.template}}
 		</div>
 	</body>
 </html>

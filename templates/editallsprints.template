@@ -24,7 +24,7 @@
 	</head>
 	<body>
 
-		{{>templates/menu.template}}
+		{{>menu.template}}
 
 		<div class="container">
 			<h2>All sprints</h2>
@@ -47,7 +47,7 @@
 
 	      	<hr>
 
-	      	{{>templates/footer.template}}
+	      	{{>footer.template}}
 		</div>
 	</body>
 </html>
