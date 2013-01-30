@@ -8,6 +8,7 @@
 * Added "Manage sprints"
 * Sprints can be created via website
 * Sprints can be edited via website
+* Menu and footer are available as sub templates
 
 ### Improvements
 

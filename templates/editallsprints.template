@@ -24,97 +24,7 @@
 	</head>
 	<body>
 
-		<div class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="navbar-inner">
-		    <div class="container">
-		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </a>
-		      <a class="brand" href="/">{{title}}</a>
-		      <div class="nav-collapse collapse">
-		        <ul class="nav">
-		          <li><a href="/">Home</a></li>
-		          <li class="dropdown active">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                  View sprints
-	                  <b class="caret"></b>
-	                </a>
-	                <ul class="dropdown-menu">
-	                  {{#sprints}}
-						<li>
-		                    <a href="/?sprint={{name}}">
-		                       <i class="icon-signal"></i>
-		                       {{name}}
-		                     </a>
-		                  </li>
-					  {{/sprints}}
-					  {{^sprints}}
-					  	<li>
-					  		<i class="icon-info"></i>
-					  		No active sprints
-					  	</li>
-					  {{/sprints}}
-					  {{#has_sprints}}
-					    <li class="divider"></li>
-					  	<li>
-					  		<a href="/all">
-					  			<i class="icon-list"></i>
-					  			All sprints
-					  		</a>
-					  	</li>
-					  {{/has_sprints}}
-	                </ul>
-	              </li>
-	              <li class="dropdown">
-	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                  Update active sprints
-	                  <b class="caret"></b>
-	                </a>
-	                <ul class="dropdown-menu">
-	                  {{#sprintConfigs}}
-						<li>
-		                    <a href="/refresh?sprint={{name}}">
-		                       <i class="icon-refresh"></i>
-		                       {{name}}
-		                     </a>
-		                  </li>
-					  {{/sprintConfigs}}
-					  {{^sprintConfigs}}
-					  	<li>
-					  		<i class="icon-info"></i>
-					  		No active sprints
-					  	</li>
-					  {{/sprintConfigs}}
-	                </ul>
-	              </li>
-	              <li class="dropdown">
-	              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                  Manage sprints
-	                  <b class="caret"></b>
-	                </a>
-	              	<ul class="dropdown-menu">
-						<li>
-		                    <a href="/manage/edit">
-		                       <i class="icon-pencil"></i>
-		                       Edit existing sprints
-		                    </a>
-		                </li>
-		                <li>
-		                    <a href="/manage/add">
-		                       <i class="icon-plus"></i>
-		                       Add sprint
-		                    </a>
-		                </li>
-	                </ul>
-	              </li>
-	              <li><a href="http://devtyr.github.com/trello-burndown/" target="_blank">About</a></li>
-		        </ul>
-		      </div><!--/.nav-collapse -->
-		    </div>
-		  </div>
-		</div>
+		{{>templates/menu.template}}
 
 		<div class="container">
 			<h2>All sprints</h2>
@@ -137,9 +47,7 @@
 
 	      	<hr>
 
-	      	<footer>
-	          <p>Developed by <a href="http://devtyr.com" target="_blank">DevTyr</a></p>
-	      	</footer>
+	      	{{>templates/footer.template}}
 		</div>
 	</body>
 </html>
