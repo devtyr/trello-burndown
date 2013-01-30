@@ -2,9 +2,17 @@
 
 ## 0.7.0
 
+### Features
+
+* Renamed "Update sprints" to "Update active sprints"
+* Added "Manage sprints"
+* Sprints can be created via website
+* Sprints can be edited via website
+
+### Improvements
+
 * Only active sprints are shown in "View sprints"
 * Added "All sprints" page
-* Renamed "Update sprints" to "Update active sprints"
 
 ## 0.6.0
 

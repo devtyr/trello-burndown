@@ -125,8 +125,19 @@
 
 		<div class="container">
 			
-			<h2>Add new sprint</h2>
-			<form class="form-horizontal" data-bind="submit: addSprint">
+			<h2>Edit sprint</h2>
+			
+			<div class="alert alert-error" data-bind="visible: isErrorMessageVisible">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Error! </strong><span data-bind="text: message"></span>
+			</div>
+
+			<div class="alert alert-success" data-bind="visible: isInfoMessageVisible">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Well done! </strong><span data-bind="text: message"></span>
+			</div>
+
+			<form class="form-horizontal" data-bind="submit: updateSprint">
 				<div class="control-group">
 					<label class="control-label" for="inputName">Sprint name</label>
 					<div class="controls">
@@ -204,12 +215,36 @@
 				$(document).ready(function() {
 					$('#dateRange').daterangepicker();
 					
+					$('#standupTimeDiv').datetimepicker({
+						pickDate: false
+					});
+
 					$('#dateRange').blur(function() {
 						updateSprintRange();	
 					});
 
-					$('#standupTimeDiv').datetimepicker({
-						pickDate: false
+					var qsParm = new Array();
+
+					var query = window.location.search.substring(1);
+					var parms = query.split('&');
+					for (var i=0; i<parms.length; i++) {
+						var pos = parms[i].indexOf('=');
+						if (pos > 0) {
+							var key = parms[i].substring(0,pos);
+							var val = parms[i].substring(pos+1);
+							qsParm[key] = val;
+						}
+					}
+
+					sprintViewModel.loadSprint(qsParm["sprint"], function(dateRange) {
+						if (dateRange) {
+							var datePicker = $('#dateRange').data().daterangepicker;
+							if (datePicker) {
+								$('#dateRange').attr('value', dateRange.startDate.toString(datePicker.format) + " - " + dateRange.endDate.toString(datePicker.format));
+								datePicker.updateFromControl();
+								updateSprintRange();
+							}
+						}
 					});
 				});
 			</script>

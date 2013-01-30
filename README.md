@@ -6,10 +6,13 @@ Generate a burndown chart from trello cards.
 
 * Generate burndown charts from Trello cards
 * Support of multiple sprints
+* Sprint configuration can be saved for usage via website from command line
+* Update sprint statistics based on a job
 * Web server
-* Sprint configuration can be saved for usage via website
-* Update sprint data based on a job
-* Update sprint data using the website
+* Add sprints via website
+* Edit sprints via website
+* Update sprint statistics using the website
+* List of all sprints
 * Templating
 
 ## How it works
@@ -29,6 +32,8 @@ As a precondition you have to encode some information into the card's title. Thi
 * **e**: the real effort (to reflect this against the estimate)
 
 ### Generate it!
+
+> **Please note**: All these things can also be done using the web site. To do that start the included webserver (`node run.js`).
 
 To generate it, you have to execute `generate.js` as described below:
 
@@ -58,7 +63,7 @@ To start the web server use the command
 
 	node run.js
 
-Per default you can connect to `http://localhost:8008/?sprint=[sprintname]`. Replace `[sprintname]` with the name you used for generation (option `-n`). 
+Per default you can connect to `http://localhost:8008`.  
 
 ### Supported browsers
 
@@ -84,26 +89,26 @@ This is what you will have available in your templates:
 		sprint: '47',
 		burndown: {
 			data1: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			],
 			data2: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			]
 		},
 		effortDaily: {
 			data1: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			],
 			data2: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			]
 		},
 		effortTotal: {
 			data1: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			],
 			data2: [
-				{ x: "0", y: 20 }
+				{ x: 0, y: 20 }
 			]
 		},
 		generationTime: Change date of sprint data file
@@ -140,4 +145,5 @@ There are some settings you can set up in `settings.json`:
 ## Planned features
 
 * Add some KPI's
-
+* Upload sprint tasks
+* Create Trello sprint board and predefined lists

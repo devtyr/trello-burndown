@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>{{title}}</title>
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="/static/default.css">
+		<link href="/static/bootstrap.min.css" rel="stylesheet">
+
+		<style>
+	      body {
+	        padding-top: 60px; 
+	      }
+	    </style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="/static/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </a>
+		      <a class="brand" href="/">{{title}}</a>
+		      <div class="nav-collapse collapse">
+		        <ul class="nav">
+		          <li><a href="/">Home</a></li>
+		          <li class="dropdown active">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  View sprints
+	                  <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  {{#sprints}}
+						<li>
+		                    <a href="/?sprint={{name}}">
+		                       <i class="icon-signal"></i>
+		                       {{name}}
+		                     </a>
+		                  </li>
+					  {{/sprints}}
+					  {{^sprints}}
+					  	<li>
+					  		<i class="icon-info"></i>
+					  		No active sprints
+					  	</li>
+					  {{/sprints}}
+					  {{#has_sprints}}
+					    <li class="divider"></li>
+					  	<li>
+					  		<a href="/all">
+					  			<i class="icon-list"></i>
+					  			All sprints
+					  		</a>
+					  	</li>
+					  {{/has_sprints}}
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  Update active sprints
+	                  <b class="caret"></b>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  {{#sprintConfigs}}
+						<li>
+		                    <a href="/refresh?sprint={{name}}">
+		                       <i class="icon-refresh"></i>
+		                       {{name}}
+		                     </a>
+		                  </li>
+					  {{/sprintConfigs}}
+					  {{^sprintConfigs}}
+					  	<li>
+					  		<i class="icon-info"></i>
+					  		No active sprints
+					  	</li>
+					  {{/sprintConfigs}}
+	                </ul>
+	              </li>
+	              <li class="dropdown">
+	              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	                  Manage sprints
+	                  <b class="caret"></b>
+	                </a>
+	              	<ul class="dropdown-menu">
+						<li>
+		                    <a href="/manage/edit">
+		                       <i class="icon-pencil"></i>
+		                       Edit existing sprints
+		                    </a>
+		                </li>
+		                <li>
+		                    <a href="/manage/add">
+		                       <i class="icon-plus"></i>
+		                       Add sprint
+		                    </a>
+		                </li>
+	                </ul>
+	              </li>
+	              <li><a href="http://devtyr.github.com/trello-burndown/" target="_blank">About</a></li>
+		        </ul>
+		      </div><!--/.nav-collapse -->
+		    </div>
+		  </div>
+		</div>
+
+		<div class="container">
+			<h2>All sprints</h2>
+			
+			<div class="alert alert-success">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  This is a list of all active sprints. Expired sprints cannot be edited. Click the one to edit.
+			</div>
+
+			<ul>
+				{{#sprintConfigs}}
+					<li>
+						<a href="/manage/edit?sprint={{name}}">{{name}}</a>
+					</li>
+				{{/sprintConfigs}}
+				{{^sprintConfigs}}
+					No sprints available
+				{{/sprintConfigs}}
+			</ul>
+
+	      	<hr>
+
+	      	<footer>
+	          <p>Developed by <a href="http://devtyr.com" target="_blank">DevTyr</a></p>
+	      	</footer>
+		</div>
+	</body>
+</html>
