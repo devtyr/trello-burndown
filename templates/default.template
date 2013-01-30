@@ -159,7 +159,7 @@
 		      "className": ".main.l1",
 		      "data": [
 		        {{#burndown.data1}}
-		        	{ "x": "{{x}}", "y": {{y}} },
+		        	{ "x": {{x}}, "y": {{y}} },
     			{{/burndown.data1}}
               ]
 		    }
@@ -170,7 +170,7 @@
 	            "type": "line-dotted",
 	            "data": [
 				  {{#burndown.data2}}
-		        	{ "x": "{{x}}", "y": {{y}} },
+		        	{ "x": {{x}}, "y": {{y}} },
 	    		  {{/burndown.data2}}
 	            ]
 		      }
@@ -190,7 +190,7 @@
 		      "className": ".pizza",
 		      "data": [
 		      	{{#effortDaily.data1}}
-		        	{ "x": "{{x}}", "y": {{y}} },
+		        	{ "x": {{x}}, "y": {{y}} },
     			{{/effortDaily.data1}}
 		          ]
 		    }
@@ -202,7 +202,7 @@
 	           "data": 
 	           	[
 		           	{{#effortDaily.data2}}
-			        	{ "x": "{{x}}", "y": {{y}} },
+			        	{ "x": {{x}}, "y": {{y}} },
 	    			{{/effortDaily.data2}}
 		          ]
 			    }
@@ -221,7 +221,7 @@
 		      "className": ".pizza",
 		      "data": [
 		      	{{#effortTotal.data1}}
-		        	{ "x": "{{x}}", "y": {{y}} },
+		        	{ "x": {{x}}, "y": {{y}} },
     			{{/effortTotal.data1}}
 		          ]
 		    }
@@ -232,7 +232,7 @@
 	           "type": "line-dotted",
 	           "data": [
 	           	{{#effortTotal.data2}}
-		        	{ "x": "{{x}}", "y": {{y}} },
+		        	{ "x": {{x}}, "y": {{y}} },
     			{{/effortTotal.data2}}
 	          ]
 		    }

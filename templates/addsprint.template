@@ -116,26 +116,6 @@
 		                </li>
 	                </ul>
 	              </li>
-	              <li class="dropdown">
-	              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-	                  Manage sprints
-	                  <b class="caret"></b>
-	                </a>
-	              	<ul class="dropdown-menu">
-						<li>
-		                    <a href="/manage/edit">
-		                       <i class="icon-pencil"></i>
-		                       Edit existing sprints
-		                    </a>
-		                </li>
-		                <li>
-		                    <a href="/manage/add">
-		                       <i class="icon-plus"></i>
-		                       Add sprint
-		                    </a>
-		                </li>
-	                </ul>
-	              </li>
 	              <li><a href="http://devtyr.github.com/trello-burndown/" target="_blank">About</a></li>
 		        </ul>
 		      </div><!--/.nav-collapse -->
@@ -184,11 +164,12 @@
 								<span class="add-on"><i class="icon-calendar"></i></span>
 								<input type="text" data-bind="value: day" disabled>
 								<span class="add-on"><input type="checkbox" data-bind="checked: isWorkDay"></span>
+								<span class="add-on"><input type="checkbox" data-bind="checked: include"></span>
 							</div>
 						</div>
 					</div>
 					<div class="controls" data-bind="visible: sprint.dates().length > 0">
-						<span class="help-block">Activate if day is a work day, deactivate days for sprint planning, recap meeting and holidays</span>
+						<span class="help-block">Activate first checkbox if day is a work day, deactivate days for sprint planning, recap meeting and holidays; Deactivate second checkbox if day should be excluded for statistics (e.g. saturday, sunday).</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -237,12 +218,15 @@
 								currentDate.setDate(startDate.getDate() + i);
 
 								var isWorkDay = false;
-
+								var include = false;
 								if (i > 0 && i < (diffDays - 1) && currentDate.getDay() > 0 && currentDate.getDay() < 6) {
 									isWorkDay = true;
 								}
+								if (currentDate.getDay() > 0 && currentDate.getDay() < 6) {
+									include = true;
+								}
 
-								sprintViewModel.addSprintDay(currentDate.toString("yyyy-MM-dd"), isWorkDay);
+								sprintViewModel.addSprintDay(currentDate.toString("yyyy-MM-dd"), isWorkDay, include);
 							}
 						}
 					});

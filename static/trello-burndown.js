@@ -17,6 +17,7 @@ function Sprint() {
 function SprintDayDefinition(data) {
 	this.day = ko.observable(data.day);
 	this.isWorkDay = ko.observable(data.isWorkDay);
+	this.include = ko.observable(data.include);
 }
 
 function SprintViewModel() {
@@ -40,8 +41,8 @@ function SprintViewModel() {
 		});
 	};
 
-	self.addSprintDay = function(date, isWorkDay, isActive) {
-		self.sprint.dates.push(new SprintDayDefinition({ day: date, isWorkDay: isWorkDay }));
+	self.addSprintDay = function(date, isWorkDay, include) {
+		self.sprint.dates.push(new SprintDayDefinition({ day: date, isWorkDay: isWorkDay, include: include }));
 	};
 
 	self.clearDays = function() {
