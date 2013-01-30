@@ -39,17 +39,22 @@
         <ul></ul>
       </nav>
       <section>
-        <p>Generate burndown charts from trello cards.</p>
+        <p>Generate a burndown chart from trello cards.</p>
+
+<p><strong>Current version</strong>: 0.7.0</p>
 
 <h2>Features</h2>
 
 <ul>
 <li>Generate burndown charts from Trello cards</li>
 <li>Support of multiple sprints</li>
+<li>Sprint configuration can be saved for usage via website from command line</li>
+<li>Update sprint statistics based on a job</li>
 <li>Web server</li>
-<li>Sprint configuration can be saved for usage via website</li>
-<li>Update sprint data based on a job</li>
-<li>Update sprint data using the website</li>
+<li>Add sprints via website</li>
+<li>Edit sprints via website</li>
+<li>Update sprint statistics using the website</li>
+<li>List of all sprints</li>
 <li>Templating</li>
 </ul><h2>How it works</h2>
 
@@ -72,6 +77,10 @@
 <li>
 <strong>e</strong>: the real effort (to reflect this against the estimate)</li>
 </ul><h3>Generate it!</h3>
+
+<blockquote>
+<p><strong>Please note</strong>: All these things can also be done using the web site. To do that start the included webserver (<code>node run.js</code>).</p>
+</blockquote>
 
 <p>To generate it, you have to execute <code>generate.js</code> as described below:</p>
 
@@ -113,7 +122,7 @@
 <pre><code>node run.js
 </code></pre>
 
-<p>Per default you can connect to <code>http://localhost:8008/?sprint=[sprintname]</code>. Replace <code>[sprintname]</code> with the name you used for generation (option <code>-n</code>). </p>
+<p>Per default you can connect to <code>http://localhost:8008</code>.  </p>
 
 <h3>Supported browsers</h3>
 
@@ -123,9 +132,11 @@
 
 <p>Here is a screenshot of a generated burndown chart (for a very bad sprint):</p>
 
-<p><img src="http://i.imgur.com/OhmSGO3.png" alt="Home Screen" title="Home screen"></p>
+<p><img src="http://i.imgur.com/kXLFm6Z.png" alt="Home Screen" title="Home screen"></p>
 
-<p><img src="http://i.imgur.com/1AVN2Y4.png" alt="Sample burndown chart" title="Sample burndown chart"></p>
+<p><img src="http://i.imgur.com/r0NPHaC.png" alt="Sample burndown chart" title="Sample burndown chart"></p>
+
+<p><img src="http://i.imgur.com/7Yi9jHG.png" alt="Edit sprint" title="Edit sprint"></p>
 
 <h3>Customization</h3>
 
@@ -139,26 +150,26 @@
     sprint: '47',
     burndown: {
         data1: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ],
         data2: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ]
     },
     effortDaily: {
         data1: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ],
         data2: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ]
     },
     effortTotal: {
         data1: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ],
         data2: [
-            { x: "0", y: 20 }
+            { x: 0, y: 20 }
         ]
     },
     generationTime: Change date of sprint data file
@@ -201,6 +212,8 @@ html_header         Header of the generated page (H1)
 
 <ul>
 <li>Add some KPI's</li>
+<li>Upload sprint tasks</li>
+<li>Create Trello sprint board and predefined lists</li>
 </ul>
       </section>
       <footer>
