@@ -73,9 +73,11 @@ To view the charts you can use Chrome (Chromium), Firefox, Safari (WebKit), Oper
 
 Here is a screenshot of a generated burndown chart (for a very bad sprint):
 
-![Home Screen](http://i.imgur.com/OhmSGO3.png "Home screen")
+![Home Screen](http://i.imgur.com/kXLFm6Z.png "Home screen")
 
-![Sample burndown chart](http://i.imgur.com/1AVN2Y4.png "Sample burndown chart")
+![Sample burndown chart](http://i.imgur.com/r0NPHaC.png "Sample burndown chart")
+
+![Edit sprint](http://i.imgur.com/7Yi9jHG.png "Edit sprint")
 
 ### Customization
 
