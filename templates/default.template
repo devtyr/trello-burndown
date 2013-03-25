@@ -41,29 +41,29 @@
 	<h4>Burndown chart</h4>
 	<figure style="width: 900px; height: 250px;" id="burndownChart"></figure>
 	<ul>
-		<li>dotted: ideal estimate</li>
-		<li>line: done estimate</li>
+		<li>green: ideal estimate</li>
+		<li>blue: done estimate</li>
 	</ul>
 
 	<h4>Done estimate vs. effort (daily)</h4>
 	<figure style="width: 900px; height: 250px;" id="effortChart"></figure>
 	<ul>
-		<li>dotted: done effort</li>
-		<li>line: done estimate</li>
+		<li>green: done estimate</li>
+		<li>blue: done effort</li>
 	</ul>
 
 	<h4>Done estimate vs. effort (total)</h4>
 	<figure style="width: 900px; height: 250px;" id="totalEffortChart"></figure>
 	<ul>
-		<li>dotted: done effort (total)</li>
-		<li>line: done estimate </li>
+		<li>green: done estimate </li>
+		<li>blue: done effort (total)</li>
 	</ul>
 
 	<script>
 	      var data = {
 		  "xScale": "ordinal",
 		  "yScale": "linear",
-		  "type": "line",
+		  "type": "line-dotted",
 		  "main": [
 		    {
 		      "className": ".main.l1",
@@ -72,42 +72,50 @@
 		        	{ "x": {{x}}, "y": {{y}} },
     			{{/burndown.data1}}
               ]
-		    }
-          ],
-		  "comp": [
-			  {
+		    },
+		    {
 	            "className": ".main.l2",
-	            "type": "line-dotted",
 	            "data": [
 				  {{#burndown.data2}}
 		        	{ "x": {{x}}, "y": {{y}} },
 	    		  {{/burndown.data2}}
 	            ]
 		      }
-		  ]
+          ],
+		  "comp": []
 	      };
 
-      var myChart = new xChart("bar", data, "#burndownChart");
+	  var tt = document.createElement('div'),
+	  leftOffset = -(~~$('html').css('padding-left').replace('px', '') + ~~$('body').css('margin-left').replace('px', '')),
+	  topOffset = -32;
+	  tt.className = 'ex-tooltip';
+	  document.body.appendChild(tt);
+
+	  var opts = {
+		  "dataFormatX": function (x) { return x; },
+		  "tickFormatX": function (x) { return x; },
+		  "mouseover": function (d, i) {
+		    var pos = $(this).offset();
+		    $(tt).text(d.x + ': ' + d.y)
+		      .css({top: topOffset + pos.top, left: pos.left + leftOffset, position: 'absolute'})
+		      .show();
+		  },
+		  "mouseout": function (x) {
+		    $(tt).hide();
+		  }
+		};
+
+      var myChart = new xChart("bar", data, "#burndownChart", opts);
       </script>
 
 	  <script>
 	      var data = {
 		  "xScale": "ordinal",
 		  "yScale": "linear",
-		  "type": "line",
+		  "type": "line-dotted",
 		  "main": [
 		    {
-		      "className": ".pizza",
-		      "data": [
-		      	{{#effortDaily.data1}}
-		        	{ "x": {{x}}, "y": {{y}} },
-    			{{/effortDaily.data1}}
-		          ]
-		    }
-    	  ],
-		  "comp": [
-			   {
-	           "className": ".pizza",
+	           "className": ".main.l2",
 	           "type": "line-dotted",
 	           "data": 
 	           	[
@@ -115,20 +123,37 @@
 			        	{ "x": {{x}}, "y": {{y}} },
 	    			{{/effortDaily.data2}}
 		          ]
-			    }
-			  ]
+			},
+		    {
+		      "className": ".main.l1",
+		      "data": [
+		      	{{#effortDaily.data1}}
+		        	{ "x": {{x}}, "y": {{y}} },
+    			{{/effortDaily.data1}}
+		          ]
+		    }
+    	  ],
+		  "comp": []
 			};
-      var myChart = new xChart("bar", data, "#effortChart");
+      var myChart = new xChart("bar", data, "#effortChart", opts);
       </script>
 
       <script>
 	      var data = {
 		  "xScale": "ordinal",
 		  "yScale": "linear",
-		  "type": "line",
+		  "type": "line-dotted",
 		  "main": [
 		    {
-		      "className": ".pizza",
+	           "className": ".main.l1",
+	           "data": [
+	           	{{#effortTotal.data2}}
+		        	{ "x": {{x}}, "y": {{y}} },
+    			{{/effortTotal.data2}}
+	          ]
+		    },
+		    {
+		      "className": ".main.l2",
 		      "data": [
 		      	{{#effortTotal.data1}}
 		        	{ "x": {{x}}, "y": {{y}} },
@@ -136,20 +161,10 @@
 		          ]
 		    }
     	  ],
-		  "comp": [
-			   {
-	           "className": ".pizza",
-	           "type": "line-dotted",
-	           "data": [
-	           	{{#effortTotal.data2}}
-		        	{ "x": {{x}}, "y": {{y}} },
-    			{{/effortTotal.data2}}
-	          ]
-		    }
-		  ]
+		  "comp": []
 
 	};
-      var myChart = new xChart("bar", data, "#totalEffortChart");
+      var myChart = new xChart("bar", data, "#totalEffortChart", opts);
       </script>
 
       <div class="alert alert-success">

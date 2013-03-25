@@ -1,5 +1,12 @@
 # RELEASE NOTES
 
+## 0.8.0
+
+### Bugs
+
+* Sprint was disabled one day to early
+* Mouseover for data points
+
 ## 0.7.0
 
 ### Features
