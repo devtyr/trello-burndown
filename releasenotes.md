@@ -5,6 +5,11 @@
 ### Bugs
 
 * Sprint was disabled one day to early
+* 'export' and 'config' folders are created on startup now if they don't exist
+* Removed d3.js as a NPM module due to incompatibility with node 0.10.x; added as a static resource
+
+### Features
+
 * Mouseover for data points
 
 ## 0.7.0
