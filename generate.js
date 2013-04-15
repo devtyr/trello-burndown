@@ -14,7 +14,7 @@ var options = require('optimist')
 			  .alias('r', 'resources')
 			  .describe('r', 'Count matching day')
 			  .alias('f', 'finishlist')
-			  .describe('f', 'Name of the list all finished tasks are moved to')
+			  .describe('f', 'Name(s) of the list all finished tasks are moved to')
 			  .alias('t', 'standuptime')
 			  .describe('t', 'Standup meeting time; if not defined, split time is midnight')
 			  .alias('n', 'name')
@@ -36,7 +36,7 @@ var Helper = require('./lib/helper');
 var lists = optionArgs.l;
 var days = optionArgs.d;
 var resources = optionArgs.r;
-var finishedList = optionArgs.f;
+var finishedLists = optionArgs.f;
 var standupTime = optionArgs.t;
 var name = optionArgs.n;
 var save = optionArgs.s;
@@ -63,7 +63,7 @@ if (!resources || !resources.length) {
 	return;
 }
 
-if (!finishedList) {
+if (!finishedLists || !finishedLists.length) {
 	options.showHelp();
 	console.error('No finished list name defined');
 	console.info('Example: -f "Finished"');
@@ -72,12 +72,13 @@ if (!finishedList) {
 
 days = days.split(',');
 resources = resources.split(',');
+finishedLists = finishedLists.split(',');
 
 var helper = new Helper();
 if (save) {
 	console.log("Generating configuration ...");
-	helper.saveConfiguration(lists, days, resources, finishedList, standupTime, name);
+	helper.saveConfiguration(lists, days, resources, finishedLists, standupTime, name);
 } else {
 	console.log("Starting export ...");
-	helper.generateAndExport(lists, days, resources, finishedList, standupTime, name);
+	helper.generateAndExport(lists, days, resources, finishedLists, standupTime, name);
 }
