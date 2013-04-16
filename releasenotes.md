@@ -11,6 +11,7 @@
 ### Features
 
 * Mouseover for data points
+* Support of multiple finished lists
 
 ## 0.7.0
 
