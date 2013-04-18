@@ -8,6 +8,7 @@
 * 'export' and 'config' folders are created on startup now if they don't exist
 * Removed d3.js as a NPM module due to incompatibility with node 0.10.x; added as a static resource
 * Work done on none work days won't be tracked
+* Changed sprint burndown for uniformity
 
 ### Features
 

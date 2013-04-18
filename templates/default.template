@@ -41,8 +41,8 @@
 	<h4>Burndown chart</h4>
 	<figure style="width: 900px; height: 250px;" id="burndownChart"></figure>
 	<ul>
-		<li>green: ideal estimate</li>
-		<li>blue: done estimate</li>
+		<li>green: done estimate</li>
+		<li>blue: ideal estimate</li>
 	</ul>
 
 	<h4>Done estimate vs. effort (daily)</h4>
