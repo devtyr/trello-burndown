@@ -15,6 +15,8 @@ Generate a burndown chart from trello cards.
 * List of all sprints
 * Templating
 
+	Please see the [release notes](https://github.com/devtyr/trello-burndown/blob/master/releasenotes.md "trello-burndown release notes") for further information.
+
 ## How it works
 
 If you use [Trello](http://trello.com "Trello") to manage your sprint cards, you might want to generate your burndown chart automatically instead of doing it manually.
