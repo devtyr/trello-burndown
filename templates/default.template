@@ -59,6 +59,20 @@
 		<li>blue: done effort (total)</li>
 	</ul>
 
+	<h4>Statistics</h4>
+	<p>
+		Total estimate: {{statisticsSummary.totalEstimate}}<br/>
+		Open estimae: {{statisticsSummary.openEstimate}}<br/>
+		Total effort: {{statisticsSummary.effort}}
+	</p>
+
+	<h4>Unfinished items</h4>
+	<ul>
+		{{#unfinishedItems}}
+		<li><a href="{{url}}" title="{{name}}">{{name}}</a></li>
+		{{/unfinishedItems}}
+	</ul>
+
 	<script>
 	      var data = {
 		  "xScale": "ordinal",
