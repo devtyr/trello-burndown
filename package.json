@@ -4,7 +4,7 @@
   "author": "Norbert Eder <wpfnerd+nodejs@gmail.com>",
   "homepage": "https://github.com/devtyr/trello-burndown",
   "bugs": "https://github.com/devtyr/trello-burndown/issues",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "license": "MIT",
   "keywords": [
     "trello",
