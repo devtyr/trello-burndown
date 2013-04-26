@@ -1,5 +1,11 @@
 # RELEASE NOTES
 
+## 0.9.0
+
+* Removed dependencies to `trello` and `restler` due to incompatibility with node 0.10.x
+* Added dependency to `trello_ex`
+* Minor refactorings
+
 ## 0.8.0
 
 ### Bugs
