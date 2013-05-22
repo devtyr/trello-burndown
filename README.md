@@ -146,8 +146,14 @@ There are some settings you can set up in `settings.json`:
 	html_title			Title of the generated page
 	html_header			Header of the generated page (H1)
 
+## Contributors
+
+* [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
+
 ## Planned features
 
 * Add some KPI's
 * Upload sprint tasks
 * Create Trello sprint board and predefined lists
+* Suppport Trello Scrum estimate pattern
+
