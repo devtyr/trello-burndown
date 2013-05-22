@@ -27,6 +27,11 @@ As a precondition you have to encode some information into the card's title. Thi
 
 	[p|est-e] title
 
+If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use this notation (and your estimates will be summarized in Trello):
+
+	[p|e](est) title
+
+
 **Huh?**
 
 * **p**: the priority/order of the task (to be "visible" if a task is moved to another list)
@@ -155,5 +160,4 @@ There are some settings you can set up in `settings.json`:
 * Add some KPI's
 * Upload sprint tasks
 * Create Trello sprint board and predefined lists
-* Suppport Trello Scrum estimate pattern
 
