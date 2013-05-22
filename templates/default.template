@@ -62,7 +62,7 @@
 	<h4>Statistics</h4>
 	<p>
 		Total estimate: {{statisticsSummary.totalEstimate}}<br/>
-		Open estimae: {{statisticsSummary.openEstimate}}<br/>
+		Open estimate: {{statisticsSummary.openEstimate}}<br/>
 		Total effort: {{statisticsSummary.effort}}
 	</p>
 
@@ -131,7 +131,7 @@
 		    {
 	           "className": ".main.l2",
 	           "type": "line-dotted",
-	           "data": 
+	           "data":
 	           	[
 		           	{{#effortDaily.data2}}
 			        	{ "x": {{x}}, "y": {{y}} },
@@ -184,7 +184,7 @@
       <div class="alert alert-success">
 	  	<strong>Last generation</strong>: {{generationTime}}
 	  </div>
-      
+
       <hr>
 
   	{{>footer.template}}
