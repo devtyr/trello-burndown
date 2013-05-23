@@ -27,6 +27,12 @@ As a precondition you have to encode some information into the card's title. Thi
 
 	[p|est-e] title
 
+If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use this notation (and your estimates will be summarized in Trello):
+
+	[e](est) title
+
+It is up to you to include the priority (sorting) into the title, or not (if you are using the Scrum for Trello pattern). It is not needed by trello-burndown.
+
 **Huh?**
 
 * **p**: the priority/order of the task (to be "visible" if a task is moved to another list)
@@ -130,7 +136,7 @@ It's recommended to create a daily job that generates the necessary data to be s
 
 First, log in to Trello and open [Generate API Keys](https://trello.com/1/appKey/generate "Generate API Keys"). You will receive an key to use in the next step.
 
-Second, call https://trello.com/1/authorize?key=YOUR_KEY&name=trello-releasenotes&expiration=never&response_type=token to grant access for this application. Be sure to replace `YOUR_KEY` with the key received in the first step.
+Second, call https://trello.com/1/authorize?key=YOUR_KEY&name=trello-burndown&expiration=never&response_type=token to grant access for this application. Be sure to replace `YOUR_KEY` with the key received in the first step.
 
 > For further information visit: [Getting a Token from a User](https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user "Getting a Token from a User")
 
@@ -146,8 +152,13 @@ There are some settings you can set up in `settings.json`:
 	html_title			Title of the generated page
 	html_header			Header of the generated page (H1)
 
+## Contributors
+
+* [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
+
 ## Planned features
 
 * Add some KPI's
 * Upload sprint tasks
 * Create Trello sprint board and predefined lists
+
