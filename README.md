@@ -29,8 +29,9 @@ As a precondition you have to encode some information into the card's title. Thi
 
 If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use this notation (and your estimates will be summarized in Trello):
 
-	[p|e](est) title
+	[e](est) title
 
+It is up to you to include the priority (sorting) into the title, or not (if you are using the Scrum for Trello pattern). It is not needed by trello-burndown.
 
 **Huh?**
 
