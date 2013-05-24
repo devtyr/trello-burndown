@@ -1,5 +1,11 @@
 # RELEASE NOTES
 
+## 1.0.0 (Upcoming)
+
+* Support for Scrum for Trello Chrome extension
+* Fix when a card in one of the columns doesn't have a correct match syntax and hence as a result caused the server to crash [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
+* Adding console.log to write out the card that failed the regex check [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
+
 ## 0.9.0
 
 * Removed dependencies to `trello` and `restler` due to incompatibility with node 0.10.x

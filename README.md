@@ -27,9 +27,12 @@ As a precondition you have to encode some information into the card's title. Thi
 
 	[p|est-e] title
 
-If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use this notation (and your estimates will be summarized in Trello):
+If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use the following notations:
 
+	(est) title
 	[e](est) title
+
+First notation can be created using the extension and is for estimates. They will be summarized. It is possible to leave the effort. The second case is with defined effictive efforts. They will also be sumamrized by Scrum for Trello.
 
 It is up to you to include the priority (sorting) into the title, or not (if you are using the Scrum for Trello pattern). It is not needed by trello-burndown.
 
