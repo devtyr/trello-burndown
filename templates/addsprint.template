@@ -44,6 +44,12 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label" for="inputName">Board ID</label>
+					<div class="controls">
+						<input class="input-xxlarge" id="inputName" type="text" placeholder="Defaults to that set in settings.json" data-bind="value: sprint.boardId">
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label" for="listName">List names</label>
 					<div class="controls">
 						<input class="input-xlarge" id="listName" type="text" placeholder="Name of list" data-bind="value: currentList">

@@ -1,5 +1,6 @@
 function Sprint() {
 	this.name = ko.observable('');
+	this.boardId = ko.observable('');
 	this.dates = ko.observableArray([]);
 	this.finishedList = ko.observable('');
 	this.lists = ko.observableArray([]);
@@ -7,6 +8,7 @@ function Sprint() {
 
 	this.clear = function() {
 		this.name('');
+		this.boardId('');
 		this.dates([]);
 		this.finishedList('');
 		this.lists([]);
@@ -43,6 +45,7 @@ function SprintViewModel() {
 	var self = this;
 	self.sprint = new Sprint();
 	self.currentList = ko.observable('');
+	self.boardId = ko.observable('');
 	self.message = ko.observable('');
 	self.isErrorMessageVisible = ko.observable(false);
 	self.isInfoMessageVisible = ko.observable(false);
@@ -145,6 +148,7 @@ function SprintViewModel() {
 			self.sprint.resetIncludes();
 
 			self.sprint.name(data.name);
+			self.sprint.boardId(data.boardId);
 			self.sprint.finishedList(data.finishedList);
 
 			if (data.standupMeeting)
