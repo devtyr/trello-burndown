@@ -19,6 +19,8 @@ var options = require('optimist')
 			  .describe('t', 'Standup meeting time; if not defined, split time is midnight')
 			  .alias('n', 'name')
 			  .describe('n', 'Name of the sprint')
+			  .alias('boardId', 'boardId')
+			  .describe('boardId', 'ID of the board on trello (take from URL)')
 			  .alias('s', 'save')
 			  .describe('s', 'Save configuration')
 			  .boolean('s');
@@ -40,6 +42,7 @@ var finishedLists = optionArgs.f;
 var standupTime = optionArgs.t;
 var name = optionArgs.n;
 var save = optionArgs.s;
+var boardId = optionArgs.boardId;
 
 if (!lists || !lists.length) 
 {
@@ -77,8 +80,8 @@ finishedLists = finishedLists.split(',');
 var helper = new Helper();
 if (save) {
 	console.log("Generating configuration ...");
-	helper.saveConfiguration(lists, days, resources, finishedLists, standupTime, name);
+	helper.saveConfiguration(lists, days, resources, finishedLists, standupTime, boardId, name);
 } else {
 	console.log("Starting export ...");
-	helper.generateAndExport(lists, days, resources, finishedLists, standupTime, name);
+	helper.generateAndExport(lists, days, resources, finishedLists, standupTime, boardId, name);
 }
