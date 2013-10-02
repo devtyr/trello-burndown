@@ -1,6 +1,6 @@
 # RELEASE NOTES
 
-## 1.0.0 (Upcoming)
+## 0.9.1
 
 * Support for Scrum for Trello Chrome extension
 * Fix when a card in one of the columns doesn't have a correct match syntax and hence as a result caused the server to crash [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
