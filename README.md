@@ -30,7 +30,7 @@ As a precondition you have to encode some information into the card's title. Thi
 If you are using the Chrome extension [Scrum for Trello](https://chrome.google.com/webstore/detail/scrum-for-trello/jdbcdblgjdpmfninkoogcfpnkjmndgje "Scrum for Trello") you can use the following notations:
 
 	(est) title
-	[e](est) title
+	[e] (est) title
 
 First notation can be created using the extension and is for estimates. They will be summarized. It is possible to leave the effort. The second case is with defined effictive efforts. They will also be sumamrized by Scrum for Trello.
 
