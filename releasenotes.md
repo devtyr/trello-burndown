@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## 0.9.2
+
+* Get list of available boards
+
 ## 0.9.1
 
 * Support for Scrum for Trello Chrome extension

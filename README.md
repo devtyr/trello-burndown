@@ -155,6 +155,14 @@ There are some settings you can set up in `settings.json`:
 	html_title			Title of the generated page
 	html_header			Header of the generated page (H1)
 
+### Get board id
+
+Call
+
+	node info.js
+
+to get a list of all boards by name and their id. This should help you to set the board id where necessary as Trello changed the board id visible within the browser.
+
 ## Contributors
 
 * [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
