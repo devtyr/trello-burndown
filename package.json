@@ -19,7 +19,7 @@
     "url": "git://github.com/devtyr/trello-burndown.git"
   },
   "dependencies": {
-    "trello_ex": ">=0.1.0",
+    "trello_ex": ">=0.2.0",
     "optimist": ">=0.3.4",
     "xcharts": ">=0.1.3",
     "mime": ">=1.2.7",
