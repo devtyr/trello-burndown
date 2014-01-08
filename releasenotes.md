@@ -2,7 +2,7 @@
 
 ## 0.9.2
 
-* Get list of available boards
+* Get list of available boards via `info.js`
 
 ## 0.9.1
 
