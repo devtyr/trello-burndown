@@ -193,6 +193,10 @@ function SprintViewModel() {
 	};
 
 	self.addSprintList = function() {
+		if (self.currentList() === undefined || self.currentList() == "") {
+			alert("List name can\'t be empty!");
+			return;
+		}
 		self.sprint.lists.push({ name: self.currentList() });
 		self.currentList("");
 	};
