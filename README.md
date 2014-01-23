@@ -166,6 +166,8 @@ to get a list of all boards by name and their id. This should help you to set th
 ## Contributors
 
 * [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
+* [Alessio Basso](https://github.com/alexdown "Alessio Basso")
+* [David Banham](https://github.com/davidbanham "David Banham")
 
 ## Planned features
 
