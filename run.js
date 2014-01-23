@@ -15,6 +15,8 @@ settings.templatePath = path.join(settings.root, 'templates');
 settings.sprintTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.template);
 settings.homeTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.home_template);
 
+if (process.env.PORT) settings.port = process.env.PORT;
+
 // if export path does not exist, create it
 if (!fs.existsSync(settings.exportPath)) {
 	fs.mkdirSync(settings.exportPath);

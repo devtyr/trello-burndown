@@ -42,7 +42,7 @@ var finishedLists = optionArgs.f;
 var standupTime = optionArgs.t;
 var name = optionArgs.n;
 var save = optionArgs.s;
-var boardId = optionArgs.boardId;
+var boardId = optionArgs.boardId || settings.boardId;
 
 if (!lists || !lists.length) 
 {
