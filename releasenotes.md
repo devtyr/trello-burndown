@@ -1,5 +1,11 @@
 # RELEASE NOTES
 
+## 0.9.3
+
+* List with empty name can't be inserted any more
+* Use boardID given in settings.json if not passed as opt
+* Add check for process.env.PORT
+
 ## 0.9.2
 
 * Get list of available boards via `info.js`
