@@ -108,6 +108,7 @@
 	  var opts = {
 		  "dataFormatX": function (x) { return x; },
 		  "tickFormatX": function (x) { return x; },
+		  "xMin": 0,
 		  "mouseover": function (d, i) {
 		    var pos = $(this).offset();
 		    $(tt).text(d.x + ': ' + d.y)
