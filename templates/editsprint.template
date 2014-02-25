@@ -38,7 +38,7 @@
 			<h2>Edit sprint</h2>
 			
 			<div class="alert alert-error" data-bind="visible: isErrorMessageVisible">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<button type="button" class="close" data-hide="alert">&times;</button>
 				<strong>Error! </strong><span data-bind="text: message"></span>
 			</div>
 

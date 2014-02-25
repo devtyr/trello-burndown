@@ -86,6 +86,14 @@ function SprintViewModel() {
 		owner: this
 	});
 
+	//bind for error message hide/show
+	$(function(){
+	    $("[data-hide]").on("click", function(){
+	        //$(this).closest("." + $(this).attr("data-hide")).hide();
+	        self.isErrorMessageVisible(false);
+	    });
+	});
+
 	// Operations
 	self.addSprint = function() {
 		var dataToSend = ko.toJSON(self.sprint);
@@ -158,9 +166,12 @@ function SprintViewModel() {
 				self.updateSprintDay(data.dates[i].day, data.dates[i].isWorkDay, data.dates[i].include);
 			}
 
-			for (var i = 0; i < data.lists.length; i++) {
-				self.currentList(data.lists[i].name);
-				self.addSprintList();
+			//call addSpringList during load only if there are lists to show
+			if (data.lists.length>0 && data.lists[0].name != "") {
+				for (var i = 0; i < data.lists.length; i++) {
+					self.currentList(data.lists[i].name);
+					self.addSprintList();
+				}
 			}
 
 		}).fail(function(jqXHR, textStatus) {
@@ -194,7 +205,8 @@ function SprintViewModel() {
 
 	self.addSprintList = function() {
 		if (self.currentList() === undefined || self.currentList() == "") {
-			alert("List name can\'t be empty!");
+			self.isErrorMessageVisible(true);
+			self.message("List name can't be empty!");
 			return;
 		}
 		self.sprint.lists.push({ name: self.currentList() });
