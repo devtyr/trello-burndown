@@ -36,6 +36,12 @@ First notation can be created using the extension and is for estimates. They wil
 
 It is up to you to include the priority (sorting) into the title, or not (if you are using the Scrum for Trello pattern). It is not needed by trello-burndown.
 
+Here are some examples that are parsed exactly the same way and generating the same values:
+
+    "   [1]   (2) title"
+    "(2)[1]title"
+    "   [ 1 ]   ( 2.0 ) title"
+
 **Huh?**
 
 * **p**: the priority/order of the task (to be "visible" if a task is moved to another list)
@@ -168,10 +174,11 @@ to get a list of all boards by name and their id. This should help you to set th
 * [Juri Strumpflohner](https://github.com/juristr "Juri Strumpflohner")
 * [Alessio Basso](https://github.com/alexdown "Alessio Basso")
 * [David Banham](https://github.com/davidbanham "David Banham")
+* [Bart Kiers](https://github.com/bkiers "Bart Kiers")
+* [Jeff Nuss](https://github.com/jeffnuss "Jeff Nuss")
 
 ## Planned features
 
 * Add some KPI's
 * Upload sprint tasks
 * Create Trello sprint board and predefined lists
-

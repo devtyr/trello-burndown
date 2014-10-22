@@ -1,5 +1,11 @@
 # RELEASE NOTES
 
+## 0.9.4
+
+* [number] and (number) formatting isn't that strict any more (whitespaces ...)
+* Fix to work with connect >= 3.0 and serve-static
+* Updated empty list validation
+
 ## 0.9.3
 
 * List with empty name can't be inserted any more
