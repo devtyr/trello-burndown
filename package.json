@@ -31,5 +31,9 @@
   },
   "engines": {
     "node": ">= 0.8.0"
-  }
+  },
+  "scripts": {
+	"start":"node run.js"
+    },
+  "main": "run.js"
 }
