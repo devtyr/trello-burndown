@@ -1,10 +1,14 @@
 {
+
 	"applicationKey":	"--insert application key--",
 	"userToken":		"--insert user token--",
 	"boardId":			"--insert board id--",
-	"port":             8008,
+	"port":             8080,
 	"template":			"default.template",
 	"home_template":	"home.template",
 	"html_title":		"Trello burndown chart generator",
-	"html_header":		"Burndown for sprint "
+        "html_header":		"Burndown for sprint ",
+
+        "openshift": false,
+        "writable_path":  "../../data/"
 }
