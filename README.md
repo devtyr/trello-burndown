@@ -184,11 +184,13 @@ There are some settings you can set up in `settings.json`:
 
 ### Get board id
 
-Call
+To get a list of all boards by name and their id you have to be logged in to your Trello account in your browser and visit the following URL, [https://trello.com/1/members/me/boards?fields=name](https://trello.com/1/members/me/boards?fields=name "View Trello board id"). Copy the id field of the board with corresponding name.
+
+The same information can also be accessed by calling
 
 	node info.js
 
-to get a list of all boards by name and their id. This should help you to set the board id where necessary as Trello changed the board id visible within the browser.
+in the command line.
 
 ## Contributors
 
