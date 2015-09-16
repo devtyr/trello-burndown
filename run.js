@@ -15,7 +15,16 @@ settings.templatePath = path.join(settings.root, 'templates');
 settings.sprintTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.template);
 settings.homeTemplatePath = path.join(settings.root, 'templates' + path.sep + settings.home_template);
 
-if (process.env.PORT) settings.port = process.env.PORT;
+var ipaddress = '127.0.0.1';
+if (process.env.PORT) {
+    settings.port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT;
+}
+
+if(settings.openshift){
+    ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+    settings.exportPath = path.join(settings.root, settings.writable_path + 'export');
+    settings.configPath = path.join(settings.root, settings.writable_path + 'config');
+}
 
 // if export path does not exist, create it
 if (!fs.existsSync(settings.exportPath)) {
@@ -28,4 +37,4 @@ if (!fs.existsSync(settings.configPath)) {
 }
 
 var server = require('./lib/server');
-require('http').createServer(server).listen(settings.port);
+require('http').createServer(server).listen(settings.port, ipaddress);

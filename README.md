@@ -80,7 +80,7 @@ To start the web server use the command
 
 	node run.js
 
-Per default you can connect to `http://localhost:8008`.  
+Per default you can connect to `http://localhost:8008`.
 
 ### Supported browsers
 
@@ -141,6 +141,27 @@ You can install this via `npm`:
 
 It's recommended to create a daily job that generates the necessary data to be served by the web server.
 
+## Installation on OpenShift
+
+1. Clone this repo:
+
+        git clone git@github.com:kikofernandez/trello-burndown.git
+
+2. Create a NodeJS app in OpenShift
+
+3. Copy the address where you need to push changes
+
+4. Go into the cloned repo in step 1 and type:
+
+        git remote add openshift <address-from-step-3>
+
+5. Obtain and update the `settings.js` following the guidelines from the section
+below, **Obtain a Trello token**
+
+6. Once you have filled out these details, type:
+
+        git push --force openshift master
+
 ### Obtain a Trello token
 
 First, log in to Trello and open [Generate API Keys](https://trello.com/1/appKey/generate "Generate API Keys"). You will receive an key to use in the next step.
@@ -163,11 +184,13 @@ There are some settings you can set up in `settings.json`:
 
 ### Get board id
 
-Call
+To get a list of all boards by name and their id you have to be logged in to your Trello account in your browser and visit the following URL, [https://trello.com/1/members/me/boards?fields=name](https://trello.com/1/members/me/boards?fields=name "View Trello board id"). Copy the id field of the board with corresponding name.
+
+The same information can also be accessed by calling
 
 	node info.js
 
-to get a list of all boards by name and their id. This should help you to set the board id where necessary as Trello changed the board id visible within the browser.
+in the command line.
 
 ## Contributors
 
@@ -176,6 +199,7 @@ to get a list of all boards by name and their id. This should help you to set th
 * [David Banham](https://github.com/davidbanham "David Banham")
 * [Bart Kiers](https://github.com/bkiers "Bart Kiers")
 * [Jeff Nuss](https://github.com/jeffnuss "Jeff Nuss")
+* [Kiko Fernandez](https://github.com/kikofernandez "Kiko Fernandez")
 
 ## Planned features
 
