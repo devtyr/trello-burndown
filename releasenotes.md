@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## 0.9.5
+
+* remove dependency to `trello_ex` and updated to `trello`
+
 ## 0.9.4
 
 * [number] and (number) formatting isn't that strict any more (whitespaces ...)
